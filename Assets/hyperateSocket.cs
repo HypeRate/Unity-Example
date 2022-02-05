@@ -11,7 +11,7 @@ public class hyperateSocket : MonoBehaviour
 {
     // Put your websocket Token ID here
     public string websocketToken = "z5CAzTmsKwpVgafiTUG2jHUT8rJdSeR6Kzyx3h6yFsi4kJRyZEdk8wt2aorJYc9N";
-    public string hypeRateID = "internal-testing";
+    public string hypeRateID = "";
 
     // Textbox to display your heart rate in
     Text textBox;
@@ -72,12 +72,12 @@ public class hyperateSocket : MonoBehaviour
 
     public async void ChangeUserID(string newID)
     {
-        if (newID == hypeRateID)
-        {
-            return;
-        }
         if (websocket != null)
         {
+            if (newID == hypeRateID)
+            {
+                return;
+            }
             await websocket.Close();
             websocket = null;
         }
