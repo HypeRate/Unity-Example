@@ -7,12 +7,16 @@ public class shooting : MonoBehaviour
     private Camera gameCamera;
     private InputAction click;
 
-    public GameObject entryHole;
     public GameObject scoreDisplayObject;
     public float surfaceOffset = 0.1f;
 
+    GameObject particleSpawner, entryHole;
+
     void Awake()
     {
+        entryHole = (GameObject)Resources.Load("entry_sprite", typeof(GameObject));
+        particleSpawner = (GameObject)Resources.Load("Hit_Particles", typeof(GameObject));
+
         click = new InputAction(binding: "<Mouse>/leftButton");
         click.performed += ctx =>
         {
@@ -41,6 +45,7 @@ public class shooting : MonoBehaviour
                     // only place entryholes on non-rigidbody objects
                     Instantiate(entryHole, hit.point + hit.normal * surfaceOffset, Quaternion.FromToRotation(new Vector3(0, 1, 0), hit.normal));
                 }
+                Instantiate(particleSpawner, hit.point + hit.normal * surfaceOffset, Quaternion.FromToRotation(new Vector3(0, 1, 0), hit.normal));
 
 
                 var scoreObj = Instantiate(scoreDisplayObject, new Vector3(0, 0, 0), Quaternion.identity);

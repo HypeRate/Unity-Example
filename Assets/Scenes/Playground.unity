@@ -146,7 +146,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameCamera: {fileID: 407475993}
-  entryHole: {fileID: 279125430636778360, guid: 5665eab03c23b9a408555ed2fc13e41c, type: 3}
   scoreDisplayObject: {fileID: 6818054773128030612, guid: 430a8c47c18b67e44b7b732867b20e61, type: 3}
   surfaceOffset: 0.05
 --- !u!1 &542508511
