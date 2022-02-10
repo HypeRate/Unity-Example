@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CinemachineTarget
   - Score Target
+  - Reset Target
   layers:
   - Default
   - TransparentFX

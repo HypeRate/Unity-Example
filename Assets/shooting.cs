@@ -7,15 +7,15 @@ public class shooting : MonoBehaviour
     private Camera gameCamera;
     private InputAction click;
 
-    public GameObject scoreDisplayObject;
     public float surfaceOffset = 0.1f;
 
-    GameObject particleSpawner, entryHole;
+    GameObject particleSpawner, entryHole, scoreHandler;
 
     void Awake()
     {
         entryHole = (GameObject)Resources.Load("entry_sprite", typeof(GameObject));
         particleSpawner = (GameObject)Resources.Load("Hit_Particles", typeof(GameObject));
+        scoreHandler = GameObject.Find("ScoreHandler");
 
         click = new InputAction(binding: "<Mouse>/leftButton");
         click.performed += ctx =>
@@ -33,6 +33,11 @@ public class shooting : MonoBehaviour
                     float dist = Vector3.Distance(hit.collider.transform.position, hit.point);
                     scoreAcc = 10 - Mathf.Min(10, Mathf.Floor(dist / 0.045f));
                 }
+                else if (hit.collider.tag == "Reset Target")
+                {
+                    scoreHandler.SendMessage("ResetScore");
+                    return;
+                }
 
                 Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
                 if (rb != null)
@@ -47,9 +52,7 @@ public class shooting : MonoBehaviour
                 }
                 Instantiate(particleSpawner, hit.point + hit.normal * surfaceOffset, Quaternion.FromToRotation(new Vector3(0, 1, 0), hit.normal));
 
-
-                var scoreObj = Instantiate(scoreDisplayObject, new Vector3(0, 0, 0), Quaternion.identity);
-                scoreObj.GetComponent<ScoreTextHandler>().displayText = scoreAcc + " Points!";
+                scoreHandler.SendMessage("AddScore", scoreAcc);
             }
         };
         click.Enable();

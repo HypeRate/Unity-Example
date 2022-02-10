@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreTextHandler : MonoBehaviour
+public class PointsTextHandler : MonoBehaviour
 {
     GameObject grandChild;
     public float moveAmount = 10;
