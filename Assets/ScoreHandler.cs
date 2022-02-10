@@ -5,12 +5,13 @@ using UnityEngine;
 public class ScoreHandler : MonoBehaviour
 {
     public float currentScore = 0;
-    GameObject scoreText, pointDisplayText;
+    GameObject scoreText, timerText, pointDisplayText;
 
     // Start is called before the first frame update
     void Start()
     {
         scoreText = GameObject.Find("ScoreDisplay");
+        timerText = GameObject.Find("TimerDisplay");
         pointDisplayText = (GameObject)Resources.Load("SimpleScore", typeof(GameObject));
     }
 
@@ -34,5 +35,8 @@ public class ScoreHandler : MonoBehaviour
         currentScore = 0;
         scoreText.SendMessage("ChangeText", currentScore);
         DisplayMessage("Score reset!");
+
+        timerText.SendMessage("InitTimer");
+        timerText.SendMessage("AddTime", 1000*90);
     }
 }
