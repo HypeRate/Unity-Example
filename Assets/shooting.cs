@@ -1,13 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class shooting : MonoBehaviour
 {
-    [SerializeField]
-    private Camera gameCamera;
-    private InputAction click;
-
     public float surfaceOffset = 0.1f;
+
+    CinemachineVirtualCamera vcam;
 
     GameObject particleSpawner, entryHole, scoreHandler;
 
@@ -16,9 +15,10 @@ public class shooting : MonoBehaviour
         entryHole = (GameObject)Resources.Load("entry_sprite", typeof(GameObject));
         particleSpawner = (GameObject)Resources.Load("Hit_Particles", typeof(GameObject));
         scoreHandler = GameObject.Find("ScoreHandler");
+        vcam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
 
-        click = new InputAction(binding: "<Mouse>/leftButton");
-        click.performed += ctx =>
+        InputAction leftClick = new InputAction(binding: "<Mouse>/leftButton");
+        leftClick.performed += ctx =>
         {
             RaycastHit hit;
             float x = Screen.width / 2f;
@@ -55,6 +55,21 @@ public class shooting : MonoBehaviour
                 scoreHandler.SendMessage("AddScore", scoreAcc);
             }
         };
-        click.Enable();
+        leftClick.Enable();
+
+
+        InputAction rightHold = new InputAction(binding: "<Mouse>/rightButton");
+        rightHold.started += ctx =>
+        {
+            vcam.m_Lens.FieldOfView = 20;
+        };
+        rightHold.Enable();
+
+        InputAction rightUp = new InputAction(binding: "<Mouse>/rightButton");
+        rightUp.canceled += ctx =>
+        {
+            vcam.m_Lens.FieldOfView = 60;
+        };
+        rightUp.Enable();
     }
 }
