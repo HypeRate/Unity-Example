@@ -36,14 +36,23 @@ public class shooting : MonoBehaviour
                 else if (hit.collider.tag == "Reset Target")
                 {
                     scoreHandler.SendMessage("ResetScore");
+                    foreach (GameObject go in GameObject.FindGameObjectsWithTag("Reset Position"))
+                    {
+                        go.SendMessage("Reset");
+                    }
                     return;
+                }
+                var bonus = hit.collider.GetComponent<BonusPoints>();
+                if (bonus != null)
+                {
+                    scoreAcc += bonus.bonus;
                 }
 
                 Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
                 if (rb != null)
                 {
-                    rb.AddTorque(5*hit.normal);
-                    rb.AddForce(hit.normal*-1+new Vector3(0,1.5f,0), ForceMode.Impulse);
+                    rb.AddTorque(5 * hit.normal);
+                    rb.AddForce(hit.normal * -1 + new Vector3(0, 1.5f, 0), ForceMode.Impulse);
                 }
                 else
                 {
@@ -53,6 +62,7 @@ public class shooting : MonoBehaviour
                 Instantiate(particleSpawner, hit.point + hit.normal * surfaceOffset, Quaternion.FromToRotation(new Vector3(0, 1, 0), hit.normal));
 
                 scoreHandler.SendMessage("AddScore", scoreAcc);
+                hit.collider.SendMessage("Destroy", null, SendMessageOptions.DontRequireReceiver);
             }
         };
         leftClick.Enable();

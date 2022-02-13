@@ -86,6 +86,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: poster
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b52e6f7182e549f429d61d867f4f8429, type: 3}
+      propertyPath: m_TagString
+      value: Reset Position
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b52e6f7182e549f429d61d867f4f8429, type: 3}
 --- !u!1 &4526536130972671172 stripped
@@ -98,6 +102,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b52e6f7182e549f429d61d867f4f8429, type: 3}
   m_PrefabInstance: {fileID: 3607406876625854869}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &3547927430697439991
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4526536130972671172}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -462981019419857548, guid: b52e6f7182e549f429d61d867f4f8429, type: 3}
+--- !u!114 &5611599697256204838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4526536130972671172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae4c3e49159b964fa966fbf33aa4907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bonus: 69
+--- !u!114 &5961921230732900873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4526536130972671172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faffe1521307fcc4d892b96d3f24631d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8401560376815014313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,3 +154,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MainTexture: {fileID: 2800000, guid: 7e6d215fe127d7f48888c83c3ad4e302, type: 3}
+--- !u!114 &5763364959630133445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4526536130972671172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46e7f07c0a01c9c4d9038f13e3b210c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
