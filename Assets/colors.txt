@@ -1,0 +1,13 @@
+Wood:		D99A6C
+Light Wood:	FDD5B1
+
+Metal:		C8C8CD
+
+Sand:		FBE7B2
+Sand rock:	EDC9AF
+
+Stone light:	C9C0BB
+Stone dark:	8B8680
+
+Can Label:	E70900
+Roof Top:	2D383A

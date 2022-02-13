@@ -5245,6 +5245,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 186.346
       objectReference: {fileID: 0}
+    - target: {fileID: -1461304994638716399, guid: e4e2c8db0143d994d888433d15f4776b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 439516310653078524, guid: e4e2c8db0143d994d888433d15f4776b, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e4e2c8db0143d994d888433d15f4776b, type: 3}
       propertyPath: m_Name
       value: hideout (4)
