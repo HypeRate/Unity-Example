@@ -43,6 +43,10 @@ public class shooting : MonoBehaviour
                     {
                         go.SendMessage("Reset");
                     }
+                    foreach (GameObject go in GameObject.FindGameObjectsWithTag("RemoveOnReset"))
+                    {
+                        Destroy(go);
+                    }
                     return;
                 }
                 var bonus = hit.collider.GetComponent<BonusPoints>();
