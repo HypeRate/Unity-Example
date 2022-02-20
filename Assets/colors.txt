@@ -2,6 +2,7 @@ Wood:		D99A6C
 Light Wood:	FDD5B1
 
 Metal:		C8C8CD
+Rust:		E97451
 
 Sand:		FBE7B2
 Sand rock:	EDC9AF
