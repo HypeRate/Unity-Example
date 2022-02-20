@@ -50,6 +50,12 @@ public class hyperateSocket : MonoBehaviour
             {
                 // Change textbox text into the newly received Heart Rate (integer like "86" which represents beats per minute)
                 textBox.text = (string)msg["payload"]["hr"];
+                GameObject playerCam = GameObject.Find("PlayerFollowCamera");
+                if (playerCam != null)
+                {
+                    playerCam.SendMessage("UpdateAmplitude", (int)msg["payload"]["hr"]);
+                }
+                GameObject.Find("Heart_Icon").SendMessage("StartHeartBeat");
             }
         };
 

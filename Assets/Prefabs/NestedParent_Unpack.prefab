@@ -300,6 +300,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6556307555316582679}
     m_Modifications:
+    - target: {fileID: 8100210233603836817, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: maxHeartBeat
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100210233603836817, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: minHeartBeat
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100210233603836817, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: maxAmplitudeGain
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100210233603836817, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: maxFrequencyGain
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100210233603836817, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: minAmplitudeGain
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8100210233603836817, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
+      propertyPath: minFrequencyGain
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 8762286023885395077, guid: 9c489a8547f4d9e4387da15a4ff82c81, type: 3}
       propertyPath: m_Name
       value: PlayerFollowCamera
