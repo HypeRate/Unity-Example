@@ -8,7 +8,10 @@ public class shooting : MonoBehaviour
 
     CinemachineVirtualCamera vcam;
 
-    GameObject particleSpawner, entryHole, scoreHandler;
+    GameObject particleSpawner, entryHole, scoreHandler; 
+    
+    public AudioSource audioSource; 
+    public AudioClip clip;
 
     void Awake()
     {
@@ -63,6 +66,8 @@ public class shooting : MonoBehaviour
 
                 scoreHandler.SendMessage("AddScore", scoreAcc);
                 hit.collider.SendMessage("Destroy", null, SendMessageOptions.DontRequireReceiver);
+
+                audioSource.PlayOneShot(clip, 0.5f);
             }
         };
         leftClick.Enable();
