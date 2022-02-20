@@ -38,7 +38,6 @@ public class shooting : MonoBehaviour
                 }
                 else if (hit.collider.tag == "Reset Target")
                 {
-                    scoreHandler.SendMessage("ResetScore");
                     foreach (GameObject go in GameObject.FindGameObjectsWithTag("Reset Position"))
                     {
                         go.SendMessage("Reset");
@@ -47,6 +46,7 @@ public class shooting : MonoBehaviour
                     {
                         Destroy(go);
                     }
+                    scoreHandler.SendMessage("ResetScore");
                     return;
                 }
                 var bonus = hit.collider.GetComponent<BonusPoints>();
