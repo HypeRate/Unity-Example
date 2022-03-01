@@ -5,6 +5,8 @@ using Cinemachine;
 public class shooting : MonoBehaviour
 {
     public float surfaceOffset = 0.1f;
+    public float shootingCooldown = 0.5f;
+    float lastShot = 0;
 
     CinemachineVirtualCamera vcam;
 
@@ -23,6 +25,9 @@ public class shooting : MonoBehaviour
         InputAction leftClick = new InputAction(binding: "<Mouse>/leftButton");
         leftClick.performed += ctx =>
         {
+            if (lastShot + shootingCooldown - Time.time > 0) return;
+
+            lastShot = Time.time;
             RaycastHit hit;
             float x = Screen.width / 2f;
             float y = Screen.height / 2f;
@@ -70,9 +75,10 @@ public class shooting : MonoBehaviour
 
                 scoreHandler.SendMessage("AddScore", scoreAcc);
                 hit.collider.SendMessage("Destroy", null, SendMessageOptions.DontRequireReceiver);
-
-                audioSource.PlayOneShot(clip, 0.5f);
             }
+
+            GameObject.Find("PlayerCapsule").SendMessage("AddRecoil");
+            audioSource.PlayOneShot(clip, 0.5f);
         };
         leftClick.Enable();
 

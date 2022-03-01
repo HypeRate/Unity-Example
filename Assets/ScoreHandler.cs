@@ -5,6 +5,7 @@ using UnityEngine;
 public class ScoreHandler : MonoBehaviour
 {
     public float currentScore = 0;
+    public int gameDuration = 90;
     GameObject scoreText, timerText, pointDisplayText;
 
     // Start is called before the first frame update
@@ -37,6 +38,6 @@ public class ScoreHandler : MonoBehaviour
         DisplayMessage("Score reset!");
 
         timerText.SendMessage("InitTimer");
-        timerText.SendMessage("AddTime", 1000*90);
+        timerText.SendMessage("AddTime", 1000 * gameDuration);
     }
 }

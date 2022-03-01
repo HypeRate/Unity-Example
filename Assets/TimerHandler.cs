@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class TimerHandler : MonoBehaviour
 {
     public float lastStart = 0;
+    public float redStart = 45.0f;
 
     // Update is called once per frame
     void Update()
@@ -13,17 +14,23 @@ public class TimerHandler : MonoBehaviour
         if (curProgress <= 0)
         {
             GetComponent<Text>().text = "Time: 00:00:000";
+            GetComponent<Text>().color = new Color(1, 1, 1, 0.5f);
             return;
         }
 
         TimeSpan timeSpan = TimeSpan.FromMilliseconds(curProgress);
         string timeText = string.Format("{0:D2}:{1:D2}:{2:D2}", timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
         GetComponent<Text>().text = "Time: " + timeText;
+        if (timeSpan.Minutes == 0 && timeSpan.Seconds <= redStart)
+        {
+            GetComponent<Text>().color = new Color(1, timeSpan.Seconds/redStart , timeSpan.Seconds / redStart, 1);
+        }
     }
 
     public void InitTimer()
     {
         lastStart = Time.time * 1000;
+        GetComponent<Text>().color = new Color(1, 1, 1, 1);
     }
 
     public void AddTime(float amount)
