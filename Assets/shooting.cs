@@ -78,6 +78,7 @@ public class shooting : MonoBehaviour
             }
 
             GameObject.Find("PlayerCapsule").SendMessage("AddRecoil");
+            GameObject.Find("AmmoImage_Fill").SendMessage("Shoot", shootingCooldown);
             audioSource.PlayOneShot(clip, 0.5f);
         };
         leftClick.Enable();
