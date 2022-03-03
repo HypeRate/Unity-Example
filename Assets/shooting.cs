@@ -25,7 +25,7 @@ public class shooting : MonoBehaviour
         InputAction leftClick = new InputAction(binding: "<Mouse>/leftButton");
         leftClick.performed += ctx =>
         {
-            if (lastShot + shootingCooldown - Time.time > 0) return;
+            if (lastShot + shootingCooldown - Time.time > 0 || Cursor.lockState == CursorLockMode.None) return;
 
             lastShot = Time.time;
             RaycastHit hit;

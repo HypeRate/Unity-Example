@@ -48,7 +48,6 @@ public class ScoreHandler : MonoBehaviour
 
     public void Finish()
     {
-        Debug.Log(currentScore);
         if (!gameStarted) { return; }
         Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("Score Screen");
