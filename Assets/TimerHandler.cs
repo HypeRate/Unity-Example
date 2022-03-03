@@ -15,6 +15,13 @@ public class TimerHandler : MonoBehaviour
         {
             GetComponent<Text>().text = "Time: 00:00:000";
             GetComponent<Text>().color = new Color(1, 1, 1, 0.5f);
+            if (lastStart > 0)
+            {
+                if (GameObject.Find("ScoreHandler"))
+                {
+                    GameObject.Find("ScoreHandler").SendMessage("Finish");
+                }
+            }
             return;
         }
 

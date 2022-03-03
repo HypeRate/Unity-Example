@@ -211,6 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 643292935}
   - component: {fileID: 643292934}
+  - component: {fileID: 643292936}
   m_Layer: 0
   m_Name: ScoreHandler
   m_TagString: Untagged
@@ -231,7 +232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentScore: 0
-  gameDuration: 50
+  gameDuration: 10
 --- !u!4 &643292935
 Transform:
   m_ObjectHideFlags: 0
@@ -246,6 +247,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &643292936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643292933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1ab5af08dc8de44a1c24db3ec6726e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &701731856
 GameObject:
   m_ObjectHideFlags: 0

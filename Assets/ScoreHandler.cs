@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreHandler : MonoBehaviour
 {
     public float currentScore = 0;
     public int gameDuration = 90;
+    bool gameStarted = false;
     GameObject scoreText, timerText, pointDisplayText;
 
     // Start is called before the first frame update
@@ -24,10 +26,12 @@ public class ScoreHandler : MonoBehaviour
 
     public void AddScore(float amount)
     {
-        currentScore += amount;
 
         DisplayMessage(amount + " Points!");
 
+        if (!gameStarted) { return; }
+
+        currentScore += amount;
         scoreText.SendMessage("ChangeText", currentScore);
     }
 
@@ -39,5 +43,25 @@ public class ScoreHandler : MonoBehaviour
 
         timerText.SendMessage("InitTimer");
         timerText.SendMessage("AddTime", 1000 * gameDuration);
+        gameStarted = true;
+    }
+
+    public void Finish()
+    {
+        Debug.Log(currentScore);
+        if (!gameStarted) { return; }
+        Cursor.lockState = CursorLockMode.None;
+        SceneManager.LoadScene("Score Screen");
+    }
+    public void Update()
+    {
+        if (gameStarted)
+        {
+            if (GameObject.Find("PointsText"))
+            {
+                GameObject.Find("PointsText").SendMessage("SetText", currentScore+" POINTS");
+                Destroy(this);
+            }
+        }
     }
 }
