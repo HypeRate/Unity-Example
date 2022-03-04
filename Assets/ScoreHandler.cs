@@ -59,7 +59,7 @@ public class ScoreHandler : MonoBehaviour
             if (GameObject.Find("PointsText"))
             {
                 GameObject.Find("PointsText").SendMessage("SetText", currentScore+" POINTS");
-                Destroy(this);
+                Destroy(gameObject);
             }
         }
     }

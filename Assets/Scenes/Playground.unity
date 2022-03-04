@@ -720,6 +720,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3335062322864431804, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: maxAmplitudeGain
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3566608604093875055, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: m_RootOrder
       value: 4

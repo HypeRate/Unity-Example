@@ -19,6 +19,8 @@ public class hyperateSocket : MonoBehaviour
     WebSocket websocket;
     async void StartServer()
     {
+        if (hypeRateID == "")
+            return;
         textBox = GetComponent<Text>();
 
         websocket = new WebSocket("wss://staging.frightrate.com/socket/websocket?token=" + websocketToken);
@@ -27,6 +29,7 @@ public class hyperateSocket : MonoBehaviour
         websocket.OnOpen += () =>
         {
             Debug.Log("Connection open!");
+            textBox.text = "Connecting to "+ hypeRateID + " ...";
             SendWebSocketMessage();
         };
 

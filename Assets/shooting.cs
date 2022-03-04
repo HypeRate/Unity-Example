@@ -15,7 +15,7 @@ public class shooting : MonoBehaviour
     public AudioSource audioSource; 
     public AudioClip clip;
 
-    void Awake()
+    void Start()
     {
         entryHole = (GameObject)Resources.Load("entry_sprite", typeof(GameObject));
         particleSpawner = (GameObject)Resources.Load("Hit_Particles", typeof(GameObject));
@@ -25,6 +25,11 @@ public class shooting : MonoBehaviour
         InputAction leftClick = new InputAction(binding: "<Mouse>/leftButton");
         leftClick.performed += ctx =>
         {
+            if (scoreHandler == null)
+            {
+                scoreHandler = GameObject.Find("ScoreHandler");
+            }
+
             if (lastShot + shootingCooldown - Time.time > 0 || Cursor.lockState == CursorLockMode.None) return;
 
             lastShot = Time.time;
