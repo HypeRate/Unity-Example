@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Score Screen.unity
-    guid: 0f30d6ff19a52ac448d8ce5af6ee4967
-  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 985cd8b3671c1dc488ffd30251ff7a17
   - enabled: 1
     path: Assets/Scenes/Playground.unity
     guid: 707acc8dffb72b144bb1ffbe1c965f3d
+  - enabled: 1
+    path: Assets/Scenes/Score Screen.unity
+    guid: 0f30d6ff19a52ac448d8ce5af6ee4967
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
