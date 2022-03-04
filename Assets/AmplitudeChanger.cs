@@ -7,7 +7,7 @@ public class AmplitudeChanger : MonoBehaviour
 {
     CinemachineVirtualCamera vcam;
     public float minAmplitudeGain, maxAmplitudeGain, minFrequencyGain, maxFrequencyGain;
-    public float minHeartBeat, maxHeartBeat;
+    public float minHeartBeat, maxHeartBeat, zoomMultiplier = 1, curHeartBeat = 50;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +17,21 @@ public class AmplitudeChanger : MonoBehaviour
     // Update is called once per frame
     public void UpdateAmplitude(int heartBeat)
     {
-        float clampedHB = Mathf.Clamp(heartBeat, minHeartBeat, maxHeartBeat);
-        vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = Mathf.Lerp(minAmplitudeGain, maxAmplitudeGain, clampedHB / maxHeartBeat);
-        vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = Mathf.Lerp(minFrequencyGain, maxFrequencyGain, clampedHB / maxHeartBeat);
+        curHeartBeat = heartBeat;
+    }
+
+    public void UpdateZoom()
+    {
+        zoomMultiplier = vcam.m_Lens.FieldOfView / 60.0f;
+    }
+
+    public void Update()
+    {
+        float clampedHB = Mathf.Clamp(curHeartBeat, minHeartBeat, maxHeartBeat);
+        float apli = Mathf.Lerp(minAmplitudeGain, maxAmplitudeGain, clampedHB / maxHeartBeat) * zoomMultiplier;
+        float freq = Mathf.Lerp(minFrequencyGain, maxFrequencyGain, clampedHB / maxHeartBeat);
+
+        vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = apli;
+        vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_FrequencyGain = freq;
     }
 }

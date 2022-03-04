@@ -93,6 +93,7 @@ public class shooting : MonoBehaviour
         rightHold.started += ctx =>
         {
             vcam.m_Lens.FieldOfView = 20;
+            vcam.SendMessage("UpdateZoom");
         };
         rightHold.Enable();
 
@@ -100,6 +101,7 @@ public class shooting : MonoBehaviour
         rightUp.canceled += ctx =>
         {
             vcam.m_Lens.FieldOfView = 60;
+            vcam.SendMessage("UpdateZoom");
         };
         rightUp.Enable();
     }

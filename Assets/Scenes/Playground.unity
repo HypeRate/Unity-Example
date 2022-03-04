@@ -901,6 +901,14 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3335062322864431804, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: curHeartBeat
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335062322864431804, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
+      propertyPath: zoomMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3335062322864431804, guid: 035bf1ba97d19214580cfe6f5a29fdc3, type: 3}
       propertyPath: maxAmplitudeGain
       value: 3
       objectReference: {fileID: 0}
