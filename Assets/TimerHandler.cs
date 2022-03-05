@@ -32,7 +32,7 @@ public class TimerHandler : MonoBehaviour
         string timeText = string.Format("{0:D2}:{1:D2}:{2:D2}", timeSpan.Minutes, timeSpan.Seconds, timeSpan.Milliseconds);
         GetComponent<Text>().text = "Time: " + timeText;
 
-        if (timeSpan.Seconds == 5 && timeSpan.Milliseconds <500 && !soundPlayed)
+        if (timeSpan.Seconds == 5 && timeSpan.Milliseconds <500 && timeSpan.Minutes == 0 &&  !soundPlayed)
         {
             soundPlayed = true;
             audioSource.PlayOneShot(clip, 0.5f);

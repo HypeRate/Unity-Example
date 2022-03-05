@@ -19,16 +19,12 @@ public class shooting : MonoBehaviour
     {
         entryHole = (GameObject)Resources.Load("entry_sprite", typeof(GameObject));
         particleSpawner = (GameObject)Resources.Load("Hit_Particles", typeof(GameObject));
-        scoreHandler = GameObject.Find("ScoreHandler");
-        vcam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
+        checkInit();
 
         InputAction leftClick = new InputAction(binding: "<Mouse>/leftButton");
         leftClick.performed += ctx =>
         {
-            if (scoreHandler == null)
-            {
-                scoreHandler = GameObject.Find("ScoreHandler");
-            }
+            checkInit();
 
             if (lastShot + shootingCooldown - Time.time > 0 || Cursor.lockState == CursorLockMode.None) return;
 
@@ -92,6 +88,7 @@ public class shooting : MonoBehaviour
         InputAction rightHold = new InputAction(binding: "<Mouse>/rightButton");
         rightHold.started += ctx =>
         {
+            checkInit();
             vcam.m_Lens.FieldOfView = 20;
             vcam.SendMessage("UpdateZoom");
         };
@@ -104,5 +101,13 @@ public class shooting : MonoBehaviour
             vcam.SendMessage("UpdateZoom");
         };
         rightUp.Enable();
+    }
+
+    private void checkInit()
+    {
+        if (scoreHandler == null)
+            scoreHandler = GameObject.Find("ScoreHandler");
+        if (vcam == null)
+            vcam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
     }
 }
