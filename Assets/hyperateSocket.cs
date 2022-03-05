@@ -12,6 +12,8 @@ public class hyperateSocket : MonoBehaviour
     // Put your websocket Token ID here
     public string websocketToken = "z5CAzTmsKwpVgafiTUG2jHUT8rJdSeR6Kzyx3h6yFsi4kJRyZEdk8wt2aorJYc9N";
     public string hypeRateID = "";
+    List<int> heartRates = new List<int>();
+    public static int avgHeartrate = 0;
 
     // Textbox to display your heart rate in
     Text textBox;
@@ -23,13 +25,13 @@ public class hyperateSocket : MonoBehaviour
             return;
         textBox = GetComponent<Text>();
 
-        websocket = new WebSocket("wss://staging.frightrate.com/socket/websocket?token=" + websocketToken);
+        websocket = new WebSocket("wss://app.hyperate.io/socket/websocket?token=" + websocketToken);
         Debug.Log("Connect!");
 
         websocket.OnOpen += () =>
         {
             Debug.Log("Connection open!");
-            textBox.text = "Connecting to "+ hypeRateID + " ...";
+            textBox.text = "Connecting to " + hypeRateID + " ...";
             SendWebSocketMessage();
         };
 
@@ -56,7 +58,9 @@ public class hyperateSocket : MonoBehaviour
                 GameObject playerCam = GameObject.Find("PlayerFollowCamera");
                 if (playerCam != null)
                 {
-                    playerCam.SendMessage("UpdateAmplitude", (int)msg["payload"]["hr"]);
+                    int hr = (int)msg["payload"]["hr"];
+                    playerCam.SendMessage("UpdateAmplitude", hr);
+                    heartRates.Add(hr);
                 }
                 GameObject.Find("Heart_Icon").SendMessage("StartHeartBeat");
             }
@@ -77,6 +81,16 @@ public class hyperateSocket : MonoBehaviour
             websocket.DispatchMessageQueue();
         }
 #endif
+    }
+
+    public void SaveAvgHeartRate()
+    {
+        int sum = 0;
+        foreach (var item in heartRates)
+        {
+            sum += item;
+        }
+        avgHeartrate = sum / heartRates.Count;
     }
 
     public async void ChangeUserID(string newID)

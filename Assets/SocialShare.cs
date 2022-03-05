@@ -14,11 +14,11 @@ public class SocialShare : MonoBehaviour
 
     public void ShareToTW()
     {
-        string nameParameter = "I got "+ GetScore() + " points on the Hype Range!";
+        string nameParameter = "I scored "+ GetScore() + " points in HypeRange with an average of "+hyperateSocket.avgHeartrate + " bpm! Can you beat my score?";
         Application.OpenURL(TWITTER_ADDRESS +
            "?text=" + UnityWebRequest.EscapeURL(nameParameter + "\n") +
            "&url=" + appStoreLink +
-           "&hashtags=HypeRate,HypeRange,SteadyPulse" +
+           "&hashtags=fps,HypeRate,heartrate,HypeRange,unity" +
            "&related=Hyperate_io" +
            "&via=Hyperate_io");
     }

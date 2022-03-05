@@ -41,6 +41,7 @@ public class shooting : MonoBehaviour
                 {
                     float dist = Vector3.Distance(hit.collider.transform.position, hit.point);
                     scoreAcc = 10 - Mathf.Min(10, Mathf.Floor(dist / 0.045f));
+                    scoreAcc *= 3;
                 }
                 else if (hit.collider.tag == "Reset Target")
                 {
@@ -53,6 +54,7 @@ public class shooting : MonoBehaviour
                         Destroy(go);
                     }
                     scoreHandler.SendMessage("ResetScore");
+                    audioSource.PlayOneShot(clip, 0.5f);
                     return;
                 }
                 var bonus = hit.collider.GetComponent<BonusPoints>();
@@ -107,7 +109,7 @@ public class shooting : MonoBehaviour
     {
         if (scoreHandler == null)
             scoreHandler = GameObject.Find("ScoreHandler");
-        if (vcam == null)
+        if (vcam == null && GameObject.Find("PlayerFollowCamera"))
             vcam = GameObject.Find("PlayerFollowCamera").GetComponent<CinemachineVirtualCamera>();
     }
 }

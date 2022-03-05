@@ -50,6 +50,8 @@ public class ScoreHandler : MonoBehaviour
     {
         if (!gameStarted) { return; }
         Cursor.lockState = CursorLockMode.None;
+        GameObject.Find("HeartRate_Text").SendMessage("SaveAvgHeartRate");
+
         SceneManager.LoadScene("Score Screen");
     }
     public void Update()
@@ -59,6 +61,8 @@ public class ScoreHandler : MonoBehaviour
             if (GameObject.Find("PointsText"))
             {
                 GameObject.Find("PointsText").SendMessage("SetText", currentScore+" POINTS");
+
+                GameObject.Find("AvgText").SendMessage("SetText", hyperateSocket.avgHeartrate + " Ø bpm");
                 Destroy(gameObject);
             }
         }
